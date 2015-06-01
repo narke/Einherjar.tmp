@@ -27,7 +27,7 @@
  */
 
 /*
- * This test tests several features of the HelenOS
+ * This test tests several features of the Einherjar
  * printf() implementation which go beyond the POSIX
  * specification and GNU printf() behaviour.
  *

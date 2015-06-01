@@ -28,7 +28,7 @@
 #
 
 """
-Detect important prerequisites and parameters for building HelenOS
+Detect important prerequisites and parameters for building Einherjar
 """
 
 import sys
@@ -51,8 +51,8 @@ PACKAGE_BINUTILS = "usually part of binutils"
 PACKAGE_GCC = "preferably version 4.7.0 or newer"
 PACKAGE_CROSS = "use tools/toolchain.sh to build the cross-compiler toolchain"
 
-COMPILER_FAIL = "The compiler is probably not capable to compile HelenOS."
-COMPILER_WARNING = "The compilation of HelenOS might fail."
+COMPILER_FAIL = "The compiler is probably not capable to compile Einherjar."
+COMPILER_WARNING = "The compilation of Einherjar might fail."
 
 PROBE_HEAD = """#define AUTOTOOL_DECLARE(category, subcategory, tag, name, strc, conc, value) \\
 	asm volatile ( \\
@@ -101,7 +101,7 @@ PROBE_TAIL = """}
 """
 
 def read_config(fname, config):
-	"Read HelenOS build configuration"
+	"Read Einherjar build configuration"
 	
 	inf = open(fname, 'r')
 	
@@ -117,7 +117,7 @@ def print_error(msg):
 	
 	sys.stderr.write("\n")
 	sys.stderr.write("######################################################################\n")
-	sys.stderr.write("HelenOS build sanity check error:\n")
+	sys.stderr.write("Einherjar build sanity check error:\n")
 	sys.stderr.write("\n")
 	sys.stderr.write("%s\n" % "\n".join(msg))
 	sys.stderr.write("######################################################################\n")
@@ -130,7 +130,7 @@ def print_warning(msg):
 	
 	sys.stderr.write("\n")
 	sys.stderr.write("######################################################################\n")
-	sys.stderr.write("HelenOS build sanity check warning:\n")
+	sys.stderr.write("Einherjar build sanity check warning:\n")
 	sys.stderr.write("\n")
 	sys.stderr.write("%s\n" % "\n".join(msg))
 	sys.stderr.write("######################################################################\n")
@@ -170,22 +170,22 @@ def check_config(config, key):
 	"Check whether the configuration key exists"
 	
 	if (not key in config):
-		print_error(["Build configuration of HelenOS does not contain %s." % key,
+		print_error(["Build configuration of Einherjar does not contain %s." % key,
 		             "Try running \"make config\" again.",
-		             "If the problem persists, please contact the developers of HelenOS."])
+		             "If the problem persists, please contact the developers of Einherjar."])
 
 def check_common(common, key):
 	"Check whether the common key exists"
 	
 	if (not key in common):
 		print_error(["Failed to determine the value %s." % key,
-		             "Please contact the developers of HelenOS."])
+		             "Please contact the developers of Einherjar."])
 
 def get_target(config):
 	target = None
 	gnu_target = None
 	clang_target = None
-	helenos_target = None
+	einherjar_target = None
 	cc_args = []
 	
 	if (config['PLATFORM'] == "abs32le"):
@@ -195,41 +195,41 @@ def get_target(config):
 		if (config['CROSS_TARGET'] == "arm32"):
 			gnu_target = "arm-linux-gnueabi"
 			clang_target = "arm-unknown-linux"
-			helenos_target = "arm-helenos-gnueabi"
+			einherjar_target = "arm-einherjar-gnueabi"
 		
 		if (config['CROSS_TARGET'] == "ia32"):
 			gnu_target = "i686-pc-linux-gnu"
 			clang_target = "i386-unknown-linux"
-			helenos_target = "i686-pc-helenos"
+			einherjar_target = "i686-pc-einherjar"
 		
 		if (config['CROSS_TARGET'] == "mips32"):
 			gnu_target = "mipsel-linux-gnu"
 			clang_target = "mipsel-unknown-linux"
-			helenos_target = "mipsel-helenos"
+			einherjar_target = "mipsel-einherjar"
 			common['CC_ARGS'].append("-mabi=32")
 	
 	if (config['PLATFORM'] == "amd64"):
 		target = config['PLATFORM']
 		gnu_target = "amd64-linux-gnu"
 		clang_target = "x86_64-unknown-linux"
-		helenos_target = "amd64-helenos"
+		einherjar_target = "amd64-einherjar"
 	
 	if (config['PLATFORM'] == "arm32"):
 		target = config['PLATFORM']
 		gnu_target = "arm-linux-gnueabi"
 		clang_target = "arm-unknown-linux"
-		helenos_target = "arm-helenos-gnueabi"
+		einherjar_target = "arm-einherjar-gnueabi"
 	
 	if (config['PLATFORM'] == "ia32"):
 		target = config['PLATFORM']
 		gnu_target = "i686-pc-linux-gnu"
 		clang_target = "i386-unknown-linux"
-		helenos_target = "i686-pc-helenos"
+		einherjar_target = "i686-pc-einherjar"
 	
 	if (config['PLATFORM'] == "ia64"):
 		target = config['PLATFORM']
 		gnu_target = "ia64-pc-linux-gnu"
-		helenos_target = "ia64-pc-helenos"
+		einherjar_target = "ia64-pc-einherjar"
 	
 	if (config['PLATFORM'] == "mips32"):
 		check_config(config, "MACHINE")
@@ -239,13 +239,13 @@ def get_target(config):
 			target = config['PLATFORM']
 			gnu_target = "mipsel-linux-gnu"
 			clang_target = "mipsel-unknown-linux"
-			helenos_target = "mipsel-helenos"
+			einherjar_target = "mipsel-einherjar"
 		
 		if ((config['MACHINE'] == "bmalta")):
 			target = "mips32eb"
 			gnu_target = "mips-linux-gnu"
 			clang_target = "mips-unknown-linux"
-			helenos_target = "mips-helenos"
+			einherjar_target = "mips-einherjar"
 	
 	if (config['PLATFORM'] == "mips64"):
 		check_config(config, "MACHINE")
@@ -255,26 +255,26 @@ def get_target(config):
 			target = config['PLATFORM']
 			gnu_target = "mips64el-linux-gnu"
 			clang_target = "mips64el-unknown-linux"
-			helenos_target = "mips64el-helenos"
+			einherjar_target = "mips64el-einherjar"
 	
 	if (config['PLATFORM'] == "ppc32"):
 		target = config['PLATFORM']
 		gnu_target = "ppc-linux-gnu"
 		clang_target = "powerpc-unknown-linux"
-		helenos_target = "ppc-helenos"
+		einherjar_target = "ppc-einherjar"
 	
 	if (config['PLATFORM'] == "sparc32"):
 		target = config['PLATFORM'];
 		gnu_target = "sparc-leon3-linux-gnu"
-		helenos_target = "sparc-leon3-helenos"
+		einherjar_target = "sparc-leon3-einherjar"
 	
 	if (config['PLATFORM'] == "sparc64"):
 		target = config['PLATFORM']
 		gnu_target = "sparc64-linux-gnu"
 		clang_target = "sparc-unknown-linux"
-		helenos_target = "sparc64-helenos"
+		einherjar_target = "sparc64-einherjar"
 	
-	return (target, cc_args, gnu_target, clang_target, helenos_target)
+	return (target, cc_args, gnu_target, clang_target, einherjar_target)
 
 def check_app(args, name, details):
 	"Check whether an application can be executed"
@@ -612,7 +612,7 @@ def detect_sizes(probe, bytes, inttags, floattags):
 	if (probe['builtin_sizes']['wchar']['value'] != 4):
 		print_warning(['The compiler provided macro __WCHAR_TYPE__ for defining',
 		               'the compiler-native type wchar_t is not compliant with',
-		               'HelenOS. We are forced to define wchar_t as a hardwired',
+		               'Einherjar. We are forced to define wchar_t as a hardwired',
 		               'type int32_t.',
 		               COMPILER_WARNING])
 		fnd = False
@@ -643,7 +643,7 @@ def detect_sizes(probe, bytes, inttags, floattags):
 	if (probe['builtin_sizes']['wint']['value'] != 4):
 		print_warning(['The compiler provided macro __WINT_TYPE__ for defining',
 		               'the compiler-native type wint_t is not compliant with',
-		               'HelenOS. We are forced to define wint_t as a hardwired',
+		               'Einherjar. We are forced to define wint_t as a hardwired',
 		               'type int32_t.',
 		               COMPILER_WARNING])
 		fnd = False
@@ -715,7 +715,7 @@ def main():
 		read_config(CONFIG, config)
 	else:
 		print_error(["Configuration file %s not found! Make sure that the" % CONFIG,
-		             "configuration phase of HelenOS build went OK. Try running",
+		             "configuration phase of Einherjar build went OK. Try running",
 		             "\"make config\" again."])
 	
 	check_config(config, "PLATFORM")
@@ -728,11 +728,11 @@ def main():
 	else:
 		cross_prefix = "/usr/local/cross"
 	
-	# HelenOS cross-compiler prefix
-	if ('CROSS_HELENOS_PREFIX' in os.environ):
-		cross_helenos_prefix = os.environ['CROSS_HELENOS_PREFIX']
+	# Einherjar cross-compiler prefix
+	if ('CROSS_EINHERJAR_PREFIX' in os.environ):
+		cross_einherjar_prefix = os.environ['CROSS_EINHERJAR_PREFIX']
 	else:
-		cross_helenos_prefix = "/usr/local/cross-helenos"
+		cross_einherjar_prefix = "/usr/local/cross-einherjar"
 	
 	# Prefix binutils tools on Solaris
 	if (os.uname()[0] == "SunOS"):
@@ -756,11 +756,11 @@ def main():
 		# Compiler
 		common['CC_ARGS'] = []
 		if (config['COMPILER'] == "gcc_cross"):
-			target, cc_args, gnu_target, clang_target, helenos_target = get_target(config)
+			target, cc_args, gnu_target, clang_target, einherjar_target = get_target(config)
 			
 			if (target is None) or (gnu_target is None):
 				print_error(["Unsupported compiler target for GNU GCC.",
-				             "Please contact the developers of HelenOS."])
+				             "Please contact the developers of Einherjar."])
 			
 			path = "%s/%s/bin" % (cross_prefix, target)
 			prefix = "%s-" % gnu_target
@@ -772,15 +772,15 @@ def main():
 			common['CC'] = common['GCC']
 			common['CC_ARGS'].extend(cc_args)
 		
-		if (config['COMPILER'] == "gcc_helenos"):
-			target, cc_args, gnu_target, clang_target, helenos_target = get_target(config)
+		if (config['COMPILER'] == "gcc_einherjar"):
+			target, cc_args, gnu_target, clang_target, einherjar_target = get_target(config)
 			
-			if (target is None) or (helenos_target is None):
+			if (target is None) or (einherjar_target is None):
 				print_error(["Unsupported compiler target for GNU GCC.",
-				             "Please contact the developers of HelenOS."])
+				             "Please contact the developers of Einherjar."])
 			
-			path = "%s/%s/bin" % (cross_helenos_prefix, target)
-			prefix = "%s-" % helenos_target
+			path = "%s/%s/bin" % (cross_einherjar_prefix, target)
+			prefix = "%s-" % einherjar_target
 			
 			check_gcc(path, prefix, common, PACKAGE_CROSS)
 			check_binutils(path, prefix, common, PACKAGE_CROSS)
@@ -803,11 +803,11 @@ def main():
 			check_binutils(None, binutils_prefix, common, PACKAGE_BINUTILS)
 		
 		if (config['COMPILER'] == "clang"):
-			target, cc_args, gnu_target, clang_target, helenos_target = get_target(config)
+			target, cc_args, gnu_target, clang_target, einherjar_target = get_target(config)
 			
 			if (target is None) or (gnu_target is None) or (clang_target is None):
 				print_error(["Unsupported compiler target for clang.",
-				             "Please contact the developers of HelenOS."])
+				             "Please contact the developers of Einherjar."])
 			
 			path = "%s/%s/bin" % (cross_prefix, target)
 			prefix = "%s-" % gnu_target

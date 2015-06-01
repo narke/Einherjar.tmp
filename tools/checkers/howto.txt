@@ -7,7 +7,7 @@ it should at least give you some basic hints.
 
 If you want to try, say, the Clang static analyzer, follow the steps:
 
-1. Go to the root directory of HelenOS source tree.
+1. Go to the root directory of Einherjar source tree.
 
 2. Run
 
@@ -19,7 +19,7 @@ If you want to try, say, the Clang static analyzer, follow the steps:
    for platforms supported by some toolchain (e.g. ia32 and amd64 in the
    case of Clang).
 
-3. As HelenOS compiles, Jobfiles (e.g. kernel/kernel.job) are created.
+3. As Einherjar compiles, Jobfiles (e.g. kernel/kernel.job) are created.
 
 4. Execute the checker while still in the source tree root directory. Do
    not forget the argument "." which indicates the path to the source tree

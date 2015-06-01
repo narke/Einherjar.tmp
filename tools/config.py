@@ -30,7 +30,7 @@
 #
 
 """
-HelenOS configuration system
+Einherjar configuration system
 """
 
 import sys
@@ -707,7 +707,7 @@ def main():
 			if (position != None) and (position >= len(options)):
 				position = None
 			
-			(button, value) = xtui.choice_window(screen, 'HelenOS configuration', 'Choose configuration option', options, position)
+			(button, value) = xtui.choice_window(screen, 'Einherjar configuration', 'Choose configuration option', options, position)
 			
 			if button == 'cancel':
 				return 'Configuration canceled'

@@ -63,8 +63,8 @@ endif
 	done
 ifeq ($(CONFIG_PCUT_TESTS),y)
 	echo "echo Running all tests..." >"$(DIST_PATH)/test/run_all"
-	echo "<html><head><title>HelenOS test results</title></head><body>" >"$(DIST_PATH)/test/test.html"
-	echo "<h1>HelenOS test results</h1><ul>" >>"$(DIST_PATH)/test/test.html"
+	echo "<html><head><title>Einherjar test results</title></head><body>" >"$(DIST_PATH)/test/test.html"
+	echo "<h1>Einherjar test results</h1><ul>" >>"$(DIST_PATH)/test/test.html"
 	for file in $(RD_TESTS) ; do \
 		file2=`basename $$file`; \
 		cp "$$file" "$(DIST_PATH)/test/" ; \
@@ -80,8 +80,8 @@ endif
 
 ifeq ($(CONFIG_PCUT_SELF_TESTS),y)
 	echo "echo Running all PCUT self-tests..." >"$(DIST_PATH)/test/run_pcut"
-	echo "<html><head><title>Results of PCUT self-tests on HelenOS</title></head><body>" >"$(DIST_PATH)/test/pcut.html"
-	echo "<h1>Results of PCUT self-tests on HelenOS</h1><ul>" >>"$(DIST_PATH)/test/pcut.html"
+	echo "<html><head><title>Results of PCUT self-tests on Einherjar</title></head><body>" >"$(DIST_PATH)/test/pcut.html"
+	echo "<h1>Results of PCUT self-tests on Einherjar</h1><ul>" >>"$(DIST_PATH)/test/pcut.html"
 	echo "cp -f /test/pcut.html /data/web/pcut.html" >>"$(DIST_PATH)/test/run_pcut"
 	echo "</ul></body></html>" >>"$(DIST_PATH)/test/pcut.html"
 endif

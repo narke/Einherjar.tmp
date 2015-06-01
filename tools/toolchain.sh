@@ -67,7 +67,7 @@ GCC="gcc-${GCC_VERSION}.tar.bz2"
 GDB="gdb-${GDB_VERSION}.tar.bz2"
 
 REAL_INSTALL=true
-USE_HELENOS_TARGET=false
+USE_EINHERJAR_TARGET=false
 INSTALL_DIR="${BASEDIR}/PKG"
 
 #
@@ -142,7 +142,7 @@ show_usage() {
 	echo "Cross-compiler toolchain build script"
 	echo
 	echo "Syntax:"
-	echo " $0 [--no-install] [--helenos-target] <platform>"
+	echo " $0 [--no-install] [--einherjar-target] <platform>"
 	echo
 	echo "Possible target platforms are:"
 	echo " amd64      AMD64 (x86-64, x64)"
@@ -170,12 +170,12 @@ show_usage() {
 	echo "the actual root file system. That is only useful if you do"
 	echo "not want to run the script under the super user."
 	echo
-	echo "The --helenos-target will build HelenOS-specific toolchain"
-	echo "(i.e. it will use *-helenos-* triplet instead of *-linux-*)."
-	echo "This toolchain is installed into /usr/local/cross-helenos by"
+	echo "The --einherjar-target will build Einherjar-specific toolchain"
+	echo "(i.e. it will use *-einherjar-* triplet instead of *-linux-*)."
+	echo "This toolchain is installed into /usr/local/cross-einherjar by"
 	echo "default. The settings can be changed by setting environment"
-	echo "variable CROSS_HELENOS_PREFIX."
-	echo "Using the HelenOS-specific toolchain is still an experimental"
+	echo "variable CROSS_EINHERJAR_PREFIX."
+	echo "Using the Einherjar-specific toolchain is still an experimental"
 	echo "feature that is not fully supported."
 	echo
 	
@@ -344,47 +344,47 @@ set_target_from_platform() {
 	case "$1" in
 		"amd64")
 			LINUX_TARGET="amd64-linux-gnu"
-			HELENOS_TARGET="amd64-helenos"
+			EINHERJAR_TARGET="amd64-einherjar"
 			;;
 		"arm32")
 			LINUX_TARGET="arm-linux-gnueabi"
-			HELENOS_TARGET="arm-helenos-gnueabi"
+			EINHERJAR_TARGET="arm-einherjar-gnueabi"
 			;;
 		"ia32")
 			LINUX_TARGET="i686-pc-linux-gnu"
-			HELENOS_TARGET="i686-pc-helenos"
+			EINHERJAR_TARGET="i686-pc-einherjar"
 			;;
 		"ia64")
 			LINUX_TARGET="ia64-pc-linux-gnu"
-			HELENOS_TARGET="ia64-pc-helenos"
+			EINHERJAR_TARGET="ia64-pc-einherjar"
 			;;
 		"mips32")
 			LINUX_TARGET="mipsel-linux-gnu"
-			HELENOS_TARGET="mipsel-helenos"
+			EINHERJAR_TARGET="mipsel-einherjar"
 			;;
 		"mips32eb")
 			LINUX_TARGET="mips-linux-gnu"
-			HELENOS_TARGET="mips-helenos"
+			EINHERJAR_TARGET="mips-einherjar"
 			;;
 		"mips64")
 			LINUX_TARGET="mips64el-linux-gnu"
-			HELENOS_TARGET="mips64el-helenos"
+			EINHERJAR_TARGET="mips64el-einherjar"
 			;;
 		"ppc32")
 			LINUX_TARGET="ppc-linux-gnu"
-			HELENOS_TARGET="ppc-helenos"
+			EINHERJAR_TARGET="ppc-einherjar"
 			;;
 		"ppc64")
 			LINUX_TARGET="ppc64-linux-gnu"
-			HELENOS_TARGET="ppc64-helenos"
+			EINHERJAR_TARGET="ppc64-einherjar"
 			;;
 		"sparc32")
 			LINUX_TARGET="sparc-leon3-linux-gnu"
-			HELENOS_TARGET="sparc-leon3-helenos"
+			EINHERJAR_TARGET="sparc-leon3-einherjar"
 			;;
 		"sparc64")
 			LINUX_TARGET="sparc64-linux-gnu"
-			HELENOS_TARGET="sparc64-helenos"
+			EINHERJAR_TARGET="sparc64-einherjar"
 			;;
 		*)
 			check_error 1 "No target known for $1."
@@ -396,8 +396,8 @@ build_target() {
 	PLATFORM="$1"
 	# This sets the *_TARGET variables
 	set_target_from_platform "$PLATFORM"
-	if $USE_HELENOS_TARGET; then
-		TARGET="$HELENOS_TARGET"
+	if $USE_EINHERJAR_TARGET; then
+		TARGET="$EINHERJAR_TARGET"
 	else
 		TARGET="$LINUX_TARGET"
 	fi
@@ -411,12 +411,12 @@ build_target() {
 	if [ -z "${CROSS_PREFIX}" ] ; then
 		CROSS_PREFIX="/usr/local/cross"
 	fi
-	if [ -z "${CROSS_HELENOS_PREFIX}" ] ; then
-		CROSS_HELENOS_PREFIX="/usr/local/cross-helenos"
+	if [ -z "${CROSS_EINHERJAR_PREFIX}" ] ; then
+		CROSS_EINHERJAR_PREFIX="/usr/local/cross-einherjar"
 	fi
 	
-	if $USE_HELENOS_TARGET; then
-		PREFIX="${CROSS_HELENOS_PREFIX}/${PLATFORM}"
+	if $USE_EINHERJAR_TARGET; then
+		PREFIX="${CROSS_EINHERJAR_PREFIX}/${PLATFORM}"
 	else
 		PREFIX="${CROSS_PREFIX}/${PLATFORM}"
 	fi
@@ -544,8 +544,8 @@ while [ "$#" -gt 1 ]; do
 			REAL_INSTALL=false
 			shift
 			;;
-		--helenos-target)
-			USE_HELENOS_TARGET=true
+		--einherjar-target)
+			USE_EINHERJAR_TARGET=true
 			shift
 			;;
 		*)

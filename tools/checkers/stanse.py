@@ -117,11 +117,11 @@ def main():
 		return
 	
 	rootdir = os.path.abspath(sys.argv[1])
-	config = os.path.join(rootdir, "HelenOS.config")
+	config = os.path.join(rootdir, "Einherjar.config")
 	
 	if (not os.path.isfile(config)):
 		print("%s not found." % config)
-		print("Please specify the path to HelenOS build tree root as the first argument.")
+		print("Please specify the path to Einherjar build tree root as the first argument.")
 		return
 	
 	for job in jobs:

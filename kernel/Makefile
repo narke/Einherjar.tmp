@@ -171,7 +171,7 @@ ifeq ($(COMPILER),gcc_cross)
 	INSTRUMENTATION = -finstrument-functions
 endif
 
-ifeq ($(COMPILER),gcc_helenos)
+ifeq ($(COMPILER),gcc_einherjar)
 	CFLAGS = $(GCC_CFLAGS)
 	DEPEND_DEFS = $(DEFS) $(CONFIG_DEFS)
 	INSTRUMENTATION = -finstrument-functions

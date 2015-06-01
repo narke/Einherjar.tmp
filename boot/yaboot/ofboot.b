@@ -3,7 +3,7 @@
 MacRISC
 </COMPATIBLE>
 <DESCRIPTION>
-HelenOS
+Einherjar
 </DESCRIPTION>
 <BOOT-SCRIPT>
 " screen" output

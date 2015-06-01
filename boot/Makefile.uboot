@@ -30,7 +30,7 @@
 
 include Makefile.common
 
-IMAGE_NAME = HelenOS-$(RELEASE)
+IMAGE_NAME = Einherjar-$(RELEASE)
 BIN_OUTPUT = image.bin
 
 all: $(POST_OUTPUT)

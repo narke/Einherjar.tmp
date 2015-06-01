@@ -3,7 +3,7 @@ by compiling GRUB for the 'i386-efi' and 'x86_64-efi' targets. The combined
 32bit and 64bit EFI boot floppy image was created by modifying the
 i386-grub-mkrescue and x86_64-grub-mkrescue scripts to create EFI payloads
 which search for the bootable ISO image with the volume label
-'HelenOS boot ISO'.
+'Einherjar boot ISO'.
 
 For licensing terms of GRUB boot loader see the file COPYING contained
 in this directory. Full version of GRUB, including its source code,

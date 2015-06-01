@@ -44,8 +44,8 @@ $(POST_OUTPUT): build_dist
 
 build_dist: clean
 	mkdir -p $(DISTROOT)/boot
-	mkdir -p $(DISTROOT)/HelenOS
-	cp $(BOOT_OUTPUT) $(DISTROOT)/HelenOS/
+	mkdir -p $(DISTROOT)/Einherjar
+	cp $(BOOT_OUTPUT) $(DISTROOT)/Einherjar/
 	cp $(ISOFS_B) $(DISTROOT)/boot/
 	cp $(SECOND_B) $(DISTROOT)/boot/
 	cp $(SILO_CONF) $(DISTROOT)/boot/

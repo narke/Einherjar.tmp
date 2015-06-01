@@ -35,7 +35,7 @@ CONFIG = tools/config.py
 AUTOTOOL = tools/autotool.py
 SANDBOX = autotool
 
-CONFIG_RULES = HelenOS.config
+CONFIG_RULES = Einherjar.config
 
 COMMON_MAKEFILE = Makefile.common
 COMMON_HEADER = common.h
@@ -102,7 +102,7 @@ release:
 # Cleaning
 
 distclean: clean
-	rm -f $(CSCOPE).out $(COMMON_MAKEFILE) $(COMMON_HEADER) $(COMMON_HEADER_PREV) $(CONFIG_MAKEFILE) $(CONFIG_HEADER) tools/*.pyc tools/checkers/*.pyc release/HelenOS-*
+	rm -f $(CSCOPE).out $(COMMON_MAKEFILE) $(COMMON_HEADER) $(COMMON_HEADER_PREV) $(CONFIG_MAKEFILE) $(CONFIG_HEADER) tools/*.pyc tools/checkers/*.pyc release/Einherjar-*
 
 clean:
 	rm -fr $(SANDBOX)

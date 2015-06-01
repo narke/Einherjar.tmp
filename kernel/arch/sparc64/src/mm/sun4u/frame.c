@@ -53,7 +53,7 @@ static void frame_common_arch_init(bool low)
 		size_t size;
 
 		/*
-		 * The memmap is created by HelenOS boot loader.
+		 * The memmap is created by Einherjar boot loader.
 		 * It already contains no holes.
 		 */
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -z "$CROSS_HELENOS_PREFIX" ] && CROSS_HELENOS_PREFIX="/usr/local/cross-helenos"
+[ -z "$CROSS_EINHERJAR_PREFIX" ] && CROSS_EINHERJAR_PREFIX="/usr/local/cross-einherjar"
 
 get_define() {
 	echo "$2" | "$1" -E -P -
@@ -29,7 +29,7 @@ print_version() {
 	fi
 }
 
-for arch_path in "$CROSS_HELENOS_PREFIX"/*; do
+for arch_path in "$CROSS_EINHERJAR_PREFIX"/*; do
 	arch=`echo "$arch_path" | sed -e 's#/$##' -e 's#.*/\([^/]*\)#\1#'`
 	echo "Checking $arch..."
 
@@ -43,8 +43,8 @@ for arch_path in "$CROSS_HELENOS_PREFIX"/*; do
 	print_version "$objcopy_path" "objcopy not found!" || continue
 	
 	print_version "$gcc_path" "GCC not found!" || continue
-	check_define "$gcc_path" "__helenos__" 1 || continue
-	check_define "$gcc_path" "helenos_uarch" "$arch" || continue
+	check_define "$gcc_path" "__einherjar__" 1 || continue
+	check_define "$gcc_path" "einherjar_uarch" "$arch" || continue
 	
 	print_version "$gdb_path" "GDB not found!" || continue
 done

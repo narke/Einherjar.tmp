@@ -28,7 +28,7 @@
 #
 
 """
-HelenOS out-of-source-tree build utility
+Einherjar out-of-source-tree build utility
 """
 
 import sys

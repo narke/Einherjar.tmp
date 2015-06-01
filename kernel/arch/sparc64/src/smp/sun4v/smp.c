@@ -80,10 +80,10 @@ unsigned int max_core_strands = 0;
 
 #ifdef CONFIG_SIMICS_SMP_HACK
 /**
- * Copies a piece of HelenOS code to the place where OBP had its IPI handler.
+ * Copies a piece of Einherjar code to the place where OBP had its IPI handler.
  * By sending an IPI by the BSP to the AP the code will be executed.
  * The code will jump to the first instruction of the kernel. This is
- * a workaround how to make APs execute HelenOS code on Simics.
+ * a workaround how to make APs execute Einherjar code on Simics.
  */
 static void simics_smp_hack_init(void) {
 	asm volatile (
@@ -364,7 +364,7 @@ static void detect_execution_units(void)
 /**
  * Determine number of processors and detect physical cores. On Simics
  * copy the code which will be executed by the AP when the BSP sends an
- * IPI to it in order to make it execute HelenOS code.
+ * IPI to it in order to make it execute Einherjar code.
  */
 void smp_init(void)
 {
@@ -428,7 +428,7 @@ static bool wake_cpu(uint64_t cpuid)
 	while (state == CPU_STATE_RUNNING)
 		__hypercall_fast_ret1(cpuid, 0, 0, 0, 0, CPU_STATE, &state);
 	
-	/* make the CPU run again and execute HelenOS code */
+	/* make the CPU run again and execute Einherjar code */
 	if (__hypercall_fast4(CPU_START, cpuid,
 	    (uint64_t) KA2PA(kernel_image_start), KA2PA(trap_table),
 	    physmem_base) != EOK)

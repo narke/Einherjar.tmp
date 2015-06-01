@@ -168,7 +168,7 @@ void as_install_arch(as_t *as)
 #if defined (US3)
 	/*
 	 * Clear the extension registers.
-	 * In HelenOS, primary and secondary context registers contain
+	 * In Einherjar, primary and secondary context registers contain
 	 * equal values and kernel misses (context 0, ie. the nucleus context)
 	 * are excluded from the TSB miss handler, so it makes no sense
 	 * to have separate TSBs for primary, secondary and nucleus contexts.

@@ -29,7 +29,7 @@
 
 
 """
-Emulator wrapper for running HelenOS
+Emulator wrapper for running Einherjar
 """
 
 import os 
@@ -63,7 +63,7 @@ def get_host_native_width():
 def pc_options(guest_width):
 	opts = ''
 	
-	# Do not enable KVM if running 64 bits HelenOS
+	# Do not enable KVM if running 64 bits Einherjar
 	# on 32 bits host
 	host_width = get_host_native_width()
 	if guest_width <= host_width and not is_override('nokvm'):
@@ -164,7 +164,7 @@ def qemu_run(platform, machine):
 	if ('console' in cfg.keys()) and not cfg['console']:
 		cmdline += ' -nographic'
 
-		title = 'HelenOS/' + platform
+		title = 'Einherjar/' + platform
 		if machine != '':
 			title += ' on ' + machine
 		run_in_console(cmdline, title)
@@ -174,10 +174,10 @@ def qemu_run(platform, machine):
 			subprocess.call(cmdline, shell = True)
 		
 def ski_run(platform, machine):
-	run_in_console('ski -i contrib/conf/ski.conf', 'HelenOS/ia64 on ski')
+	run_in_console('ski -i contrib/conf/ski.conf', 'Einherjar/ia64 on ski')
 
 def msim_run(platform, machine):
-	run_in_console('msim -c contrib/conf/msim.conf', 'HelenOS/mips32 on msim')
+	run_in_console('msim -c contrib/conf/msim.conf', 'Einherjar/mips32 on msim')
 
 
 emulators = {
@@ -232,7 +232,7 @@ emulators = {
 }
 
 def usage():
-	print("%s - emulator wrapper for running HelenOS\n" % os.path.basename(sys.argv[0]))
+	print("%s - emulator wrapper for running Einherjar\n" % os.path.basename(sys.argv[0]))
 	print("%s [-d] [-h] [-net e1k|rtl8139|ne2k] [-nohdd] [-nokvm] [-nonet] [-nosnd] [-nousb]\n" %
 	    os.path.basename(sys.argv[0]))
 	print("-d\tDry run: do not run the emulation, just print the command line.")

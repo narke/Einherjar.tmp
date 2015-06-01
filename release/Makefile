@@ -28,8 +28,8 @@
 
 -include ../version
 
-EXPORT_DIR = /var/tmp/helenos/HelenOS-$(RELEASE)
-SRC_ARCHIVE = HelenOS-$(RELEASE).tar.bz2
+EXPORT_DIR = /var/tmp/einherjar/Einherjar-$(RELEASE)
+SRC_ARCHIVE = Einherjar-$(RELEASE).tar.bz2
 
 PROFILES = \
 	amd64 \
@@ -48,7 +48,6 @@ PROFILES = \
 	sparc64/niagara \
 	sparc64/ultra
 
-BZR = bzr
 TAR = tar
 
 # To determine IMG_FILE
@@ -65,9 +64,9 @@ endif
 SUFFIX = $(suffix $(IMG_FILE))
 
 ifdef PROFILE
-	RELEASE_FILE = HelenOS-$(RELEASE)-$(shell echo $(PROFILE) | tr '/' '-')$(SUFFIX)
+	RELEASE_FILE = Einherjar-$(RELEASE)-$(shell echo $(PROFILE) | tr '/' '-')$(SUFFIX)
 else
-	RELEASE_FILE = HelenOS-$(RELEASE)-$(PLATFORM)-$(MACHINE)-$(PROCESSOR)$(SUFFIX)
+	RELEASE_FILE = Einherjar-$(RELEASE)-$(PLATFORM)-$(MACHINE)-$(PROCESSOR)$(SUFFIX)
 endif
 
 .PHONY: all clean release releasefile export src_rel
@@ -91,7 +90,6 @@ release: src_rel
 $(EXPORT_DIR) export:
 	rm -rf $(EXPORT_DIR)
 	mkdir -p $(EXPORT_DIR)
-	$(BZR) export $(EXPORT_DIR) ../
 
 src_rel $(SRC_ARCHIVE): export
 	$(TAR) -C $(shell dirname $(EXPORT_DIR)) \

@@ -185,11 +185,11 @@ def main():
 		print("Please supply the full Cygwin path to Vcc as the second argument.")
 		return
 	
-	config = os.path.join(rootdir, "HelenOS.config")
+	config = os.path.join(rootdir, "Einherjar.config")
 	
 	if (not os.path.isfile(config)):
 		print("%s not found." % config)
-		print("Please specify the path to HelenOS build tree root as the first argument.")
+		print("Please specify the path to Einherjar build tree root as the first argument.")
 		return
 	
 	specpath = os.path.join(rootdir, "tools/checkers/vcc.h")

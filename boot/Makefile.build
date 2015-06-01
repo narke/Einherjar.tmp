@@ -74,7 +74,7 @@ ifeq ($(COMPILER),gcc_cross)
 	DEPEND_DEFS = $(DEFS) $(CONFIG_DEFS)
 endif
 
-ifeq ($(COMPILER),gcc_helenos)
+ifeq ($(COMPILER),gcc_einherjar)
 	CFLAGS = $(GCC_CFLAGS) $(EXTRA_CFLAGS)
 	DEPEND_DEFS = $(DEFS) $(CONFIG_DEFS)
 endif

@@ -28,12 +28,12 @@
 
 /** @file
  *
- * VCC specifications tight to the HelenOS-specific annotations.
+ * VCC specifications tight to the Einherjar-specific annotations.
  *
  */
 
-#ifndef HELENOS_VCC_H_
-#define HELENOS_VCC_H_
+#ifndef EINHERJAR_VCC_H_
+#define EINHERJAR_VCC_H_
 
 typedef _Bool bool;
 

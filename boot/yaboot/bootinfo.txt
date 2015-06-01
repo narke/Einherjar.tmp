@@ -1,5 +1,5 @@
 <chrp-boot>
-<description>HelenOS</description>
-<os-name>HelenOS</os-name>
+<description>Einherjar</description>
+<os-name>Einherjar</os-name>
 <boot-script>boot cd:,\boot\yaboot</boot-script>
 </chrp-boot>

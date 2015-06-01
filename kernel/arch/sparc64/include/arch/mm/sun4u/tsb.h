@@ -61,7 +61,7 @@ typedef union tsb_base_reg {
 	struct {
 		uint64_t base : 51;	/**< TSB base address, bits 63:13. */
 		unsigned split : 1;	/**< Split vs. common TSB for 8K and 64K
-					 * pages. HelenOS uses only 8K pages
+					 * pages. Einherjar uses only 8K pages
 					 * for user mappings, so we always set
 					 * this to 0.
 					 */

@@ -30,7 +30,7 @@
 #include <printf.h>
 #include <macros.h>
 
-static const char *project = "HelenOS bootloader";
+static const char *project = "Einherjar bootloader";
 static const char *copyright = STRING(COPYRIGHT);
 static const char *release = STRING(RELEASE);
 static const char *name = STRING(NAME);

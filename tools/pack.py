@@ -53,7 +53,7 @@ def print_error(msg):
 	
 	sys.stderr.write("\n")
 	sys.stderr.write("######################################################################\n")
-	sys.stderr.write("HelenOS build sanity check error:\n")
+	sys.stderr.write("Einherjar build sanity check error:\n")
 	sys.stderr.write("\n")
 	sys.stderr.write("%s\n" % "\n".join(msg))
 	sys.stderr.write("######################################################################\n")
