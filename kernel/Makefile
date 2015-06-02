@@ -255,7 +255,6 @@ GENERIC_SOURCES = \
 	generic/src/synch/futex.c \
 	generic/src/smp/ipi.c \
 	generic/src/smp/smp.c \
-	generic/src/security/cap.c \
 	generic/src/sysinfo/sysinfo.c \
 	generic/src/sysinfo/stats.c
 

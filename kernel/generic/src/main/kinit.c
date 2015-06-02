@@ -62,7 +62,6 @@
 #include <console/console.h>
 #include <interrupt.h>
 #include <console/kconsole.h>
-#include <security/cap.h>
 #include <lib/rd.h>
 #include <debug.h>
 #include <str.h>

@@ -41,7 +41,6 @@
 
 #include <ddi/ddi.h>
 #include <proc/task.h>
-#include <security/cap.h>
 #include <mm/frame.h>
 #include <mm/as.h>
 #include <mm/page.h>

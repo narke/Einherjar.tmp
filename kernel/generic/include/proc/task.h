@@ -42,7 +42,6 @@
 #include <adt/avl.h>
 #include <adt/btree.h>
 #include <adt/list.h>
-#include <security/cap.h>
 #include <arch/proc/task.h>
 #include <arch/proc/thread.h>
 #include <arch/context.h>
@@ -82,9 +81,6 @@ typedef struct task {
 	/** Number of threads that haven't exited yet. */
 	atomic_t lifecount;
 	
-	/** Task capabilities. */
-	cap_t capabilities;
-	
 	/** Architecture specific task data. */
 	task_arch_t arch;
 	
@@ -115,9 +111,6 @@ extern int task_kill(task_id_t);
 extern void task_kill_self(bool) __attribute__((noreturn));
 extern void task_get_accounting(task_t *, uint64_t *, uint64_t *);
 extern void task_print_list(bool);
-
-extern void cap_set(task_t *, cap_t);
-extern cap_t cap_get(task_t *);
 
 #ifndef task_create_arch
 extern void task_create_arch(task_t *);
