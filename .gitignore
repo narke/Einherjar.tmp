@@ -30,3 +30,17 @@
 
 # Debug files
 *.dSYM/
+
+# Global's files
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# Genereted files to compile Einherjar
+autotool/
+/common.h
+/common.h.prev
+image.iso
+/Makefile.common
+/Makefile.config
