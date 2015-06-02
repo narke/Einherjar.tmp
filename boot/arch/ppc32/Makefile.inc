@@ -27,7 +27,7 @@
 #
 
 BOOT_OUTPUT = image.boot
-POST_OUTPUT = $(ROOT_PATH)/image.iso
+POST_OUTPUT = $(ROOT_PATH)/einherjar.iso
 POSTBUILD = Makefile.yaboot
 
 BFD_NAME = elf32-powerpc

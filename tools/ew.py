@@ -156,8 +156,8 @@ def qemu_run(platform, machine):
 	if (not 'audio' in cfg.keys()) or cfg['audio']:
 		cmdline += qemu_audio_options()
 	
-	if cfg['image'] == 'image.iso':
-		cmdline += ' -boot d -cdrom image.iso'
+	if cfg['image'] == 'einherjar.iso':
+		cmdline += ' -boot d -cdrom einherjar.iso'
 	elif cfg['image'] == 'image.boot':
 		cmdline += ' -kernel image.boot'
 
@@ -183,7 +183,7 @@ def msim_run(platform, machine):
 emulators = {
 	'amd64' : {
 		'run' : qemu_run,
-		'image' : 'image.iso'
+		'image' : 'einherjar.iso'
 	},
 	'arm32' : {
 		'integratorcp' : {
@@ -195,7 +195,7 @@ emulators = {
 	},
 	'ia32' : {
 		'run' : qemu_run,
-		'image' : 'image.iso'
+		'image' : 'einherjar.iso'
 	},
 	'ia64' : {
 		'ski' : {
@@ -219,13 +219,13 @@ emulators = {
 	},
 	'ppc32' : {
 		'run' : qemu_run,
-		'image' : 'image.iso',
+		'image' : 'einherjar.iso',
 		'audio' : False
 	},
 	'sparc64' : {
 		'generic' : {
 			'run' : qemu_run,
-			'image' : 'image.iso',
+			'image' : 'einherjar.iso',
 			'audio' : False
 		}
 	},

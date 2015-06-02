@@ -41,6 +41,7 @@ GTAGS
 autotool/
 /common.h
 /common.h.prev
-image.iso
+/config.h
+einherjar.iso
 /Makefile.common
 /Makefile.config
