@@ -36,7 +36,7 @@
 #include <print.h>
 #include <macros.h>
 
-static const char *project = "Roentgenium kernel";
+static const char *project = "Yggdrasil kernel";
 static const char *copyright = STRING(COPYRIGHT);
 static const char *release = STRING(RELEASE);
 static const char *name = STRING(NAME);

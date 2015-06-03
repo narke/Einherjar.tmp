@@ -27,7 +27,7 @@
 #
 
 ifeq ($(MACHINE), gta02)
-	BOOT_OUTPUT = image.boot
+	BOOT_OUTPUT = yggdrasil.boot
 	POST_OUTPUT = $(ROOT_PATH)/uImage.bin
 	LADDR = 0x30008000
 	SADDR = 0x30008000
@@ -35,7 +35,7 @@ ifeq ($(MACHINE), gta02)
 endif
 
 ifeq ($(MACHINE), $(filter $(MACHINE),beagleboardxm beaglebone))
-	BOOT_OUTPUT = image.boot
+	BOOT_OUTPUT = yggdrasil.boot
 	POST_OUTPUT = $(ROOT_PATH)/uImage.bin
 	LADDR = 0x80000000
 	SADDR = 0x80000000
@@ -43,7 +43,7 @@ ifeq ($(MACHINE), $(filter $(MACHINE),beagleboardxm beaglebone))
 endif
 
 ifeq ($(MACHINE), raspberrypi)
-	BOOT_OUTPUT = image.boot
+	BOOT_OUTPUT = yggdrasil.boot
 	POST_OUTPUT = $(ROOT_PATH)/uImage.bin	
 	LADDR = 0x00008000
 	SADDR = 0x00008000

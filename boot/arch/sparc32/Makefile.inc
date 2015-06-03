@@ -27,7 +27,7 @@
 #
 
 ifeq ($(MACHINE), leon3)
-	BOOT_OUTPUT = image.boot
+	BOOT_OUTPUT = yggdrasil.boot
 	POST_OUTPUT = $(ROOT_PATH)/uImage.bin
 	LADDR = 0x40000000
 	SADDR = 0x40000000

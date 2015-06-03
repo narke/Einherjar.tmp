@@ -158,8 +158,8 @@ def qemu_run(platform, machine):
 	
 	if cfg['image'] == 'einherjar.iso':
 		cmdline += ' -boot d -cdrom einherjar.iso'
-	elif cfg['image'] == 'image.boot':
-		cmdline += ' -kernel image.boot'
+	elif cfg['image'] == 'yggdrasil.boot':
+		cmdline += ' -kernel yggdrasil.boot'
 
 	if ('console' in cfg.keys()) and not cfg['console']:
 		cmdline += ' -nographic'
@@ -188,7 +188,7 @@ emulators = {
 	'arm32' : {
 		'integratorcp' : {
 			'run' : qemu_run,
-			'image' : 'image.boot',
+			'image' : 'yggdrasil.boot',
 			'net' : False,
 			'audio' : False
 		}
@@ -208,12 +208,12 @@ emulators = {
 		},
 		'lmalta' : {
 			'run' : qemu_run,
-			'image' : 'image.boot',
+			'image' : 'yggdrasil.boot',
 			'console' : False
 		},
 		'bmalta' : {
 			'run' : qemu_run,
-			'image' : 'image.boot',
+			'image' : 'yggdrasil.boot',
 			'console' : False
 		},
 	},

@@ -26,7 +26,7 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-BOOT_OUTPUT = image.boot
+BOOT_OUTPUT = yggdrasil.boot
 POST_OUTPUT = $(ROOT_PATH)/einherjar.iso
 POSTBUILD = Makefile.silo
 
