@@ -38,11 +38,6 @@ BITS = 64
 ENDIANESS = BE
 EXTRA_CFLAGS = -mcpu=ultrasparc -m64 -mno-fpu -mcmodel=medlow
 
-RD_SRVS_NON_ESSENTIAL +=
-
-RD_SRVS_ESSENTIAL += \
-	$(USPACE_PATH)/srv/hw/irc/obio/obio
-
 SOURCES = \
 	arch/$(BARCH)/src/asm.S \
 	arch/$(BARCH)/src/main.c \

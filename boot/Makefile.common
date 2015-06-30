@@ -45,6 +45,7 @@ CONFIG_HEADER = $(ROOT_PATH)/config.h
 -include $(CONFIG_MAKEFILE)
 
 KERNEL_PATH = $(ROOT_PATH)/kernel
+DIST_PATH = $(ROOT_PATH)/distribution
 TOOLS_PATH = $(ROOT_PATH)/tools
 
 SANDBOX = pack
@@ -62,36 +63,17 @@ GENARCH_INCLUDE = generic/include/genarch
 DEPEND = Makefile.depend
 DEPEND_PREV = $(DEPEND).prev
 DISTROOT = distroot
-
-
-RD_SRVS_ESSENTIAL = \
-
-RD_SRVS_NON_ESSENTIAL = \
-
-RD_DRVS_ESSENTIAL = \
-	root/root \
-	root/virt \
-	fb/kfb 
-
-RD_DRVS_NON_ESSENTIAL = \
-
+INITRD = initrd
 
 COMPONENTS = \
-	$(KERNEL_PATH)/kernel.bin
+	$(KERNEL_PATH)/kernel.bin \
+	$(INITRD).img
 
 LINK = arch/$(BARCH)/_link.ld
 COMPS_H = arch/$(BARCH)/include/_components.h
 COMPS_C = arch/$(BARCH)/src/_components.c
 
 -include arch/$(BARCH)/Makefile.inc
-
-ifeq ($(CONFIG_BAREBONE),y)
-RD_SRVS = $(RD_SRVS_ESSENTIAL)
-RD_DRVS = $(RD_DRVS_ESSENTIAL)
-else
-RD_SRVS = $(RD_SRVS_ESSENTIAL) $(RD_SRVS_NON_ESSENTIAL)
-RD_DRVS = $(RD_DRVS_ESSENTIAL) $(RD_DRVS_NON_ESSENTIAL)
-endif
 
 MODULES := $(notdir $(COMPONENTS))
 

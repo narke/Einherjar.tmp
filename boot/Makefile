@@ -51,44 +51,9 @@ ifeq ($(RDFMT),ext4fs)
 endif
 
 build_dist: clean_dist
-	for file in $(RD_LIBS) ; do \
-		cp "$$file" "$(DIST_PATH)/lib/" ; \
-	done
-ifeq ($(CONFIG_DEVEL_FILES), y)
-	mkdir "$(DIST_PATH)/inc/c/"
-	cp -r -L "$(ROOT_PATH)/abi/include/." "$(DIST_PATH)/inc/c/"
-endif
 	for file in $(RD_APPS) ; do \
-		cp "$$file" "$(DIST_PATH)/app/" ; \
+		cp "$$file" "$(DIST_PATH)/apps/" ; \
 	done
-ifeq ($(CONFIG_PCUT_TESTS),y)
-	echo "echo Running all tests..." >"$(DIST_PATH)/test/run_all"
-	echo "<html><head><title>Einherjar test results</title></head><body>" >"$(DIST_PATH)/test/test.html"
-	echo "<h1>Einherjar test results</h1><ul>" >>"$(DIST_PATH)/test/test.html"
-	for file in $(RD_TESTS) ; do \
-		file2=`basename $$file`; \
-		cp "$$file" "$(DIST_PATH)/test/" ; \
-		echo "echo ' ->' $$file2" >>"$(DIST_PATH)/test/run_all"; \
-		echo "/test/$$file2 | to /test/$$file2.out" >>"$(DIST_PATH)/test/run_all"; \
-		echo "cat /test/$$file2.out" >>"$(DIST_PATH)/test/run_all"; \
-		echo "cp -f /test/$$file2.out /data/web/result-$$file2.txt" >>"$(DIST_PATH)/test/run_all"; \
-		echo "<li><a href=\"result-$$file2.txt\">$$file2</a></li>" >>"$(DIST_PATH)/test/test.html"; \
-	done
-	echo "cp -f /test/test.html /data/web/test.html" >>"$(DIST_PATH)/test/run_all"
-	echo "</ul></body></html>" >>"$(DIST_PATH)/test/test.html"
-endif
-
-ifeq ($(CONFIG_PCUT_SELF_TESTS),y)
-	echo "echo Running all PCUT self-tests..." >"$(DIST_PATH)/test/run_pcut"
-	echo "<html><head><title>Results of PCUT self-tests on Einherjar</title></head><body>" >"$(DIST_PATH)/test/pcut.html"
-	echo "<h1>Results of PCUT self-tests on Einherjar</h1><ul>" >>"$(DIST_PATH)/test/pcut.html"
-	echo "cp -f /test/pcut.html /data/web/pcut.html" >>"$(DIST_PATH)/test/run_pcut"
-	echo "</ul></body></html>" >>"$(DIST_PATH)/test/pcut.html"
-endif
-
-	if ls $(DIST_OVERLAY_PATH)/* >/dev/null; then \
-		cp -r -L $(DIST_OVERLAY_PATH)/* "$(DIST_PATH)"; \
-	fi
 
 clean: clean_dist
 	$(MAKE) -f $(BUILD) clean PRECHECK=$(PRECHECK)

@@ -26,45 +26,6 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-RD_SRVS_ESSENTIAL += \
-	$(USPACE_PATH)/srv/audio/hound/hound \
-	$(USPACE_PATH)/srv/devman/devman \
-	$(USPACE_PATH)/srv/hw/irc/apic/apic \
-	$(USPACE_PATH)/srv/hw/irc/i8259/i8259
-
-
-RD_DRVS_ESSENTIAL += \
-	platform/pc \
-	block/ata_bd \
-	bus/pci/pciintel \
-	bus/isa \
-	audio/sb16 \
-	char/i8042 \
-	char/ps2mouse \
-	char/xtkbd
-
-RD_DRVS_NON_ESSENTIAL += \
-	audio/hdaudio \
-	char/ns8250 \
-	time/cmos-rtc \
-	bus/usb/ehci\
-	bus/usb/ohci \
-	bus/usb/uhci \
-	bus/usb/uhcirh \
-	bus/usb/usbflbk \
-	bus/usb/usbhub \
-	bus/usb/usbhid \
-	bus/usb/usbmast \
-	bus/usb/usbmid \
-	bus/usb/vhc
-
-RD_DRV_CFG += \
-	bus/isa
-
-RD_APPS_ESSENTIAL += \
-	$(USPACE_PATH)/app/edit/edit \
-	$(USPACE_PATH)/app/mixerctl/mixerctl \
-	$(USPACE_PATH)/app/wavplay/wavplay
 
 BOOT_OUTPUT = $(ROOT_PATH)/einherjar.iso
 PREBUILD = $(INITRD).img

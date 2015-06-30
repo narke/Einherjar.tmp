@@ -178,6 +178,20 @@ void kinit(void *arg)
 	sysinfo_set_item_val("default.stack_size", NULL, STACK_SIZE_USER);
 	
 	interrupts_enable();
+
+	/* Load RAM disk image */
+	for (size_t i = 0; i < init.cnt; i++) {
+		if (init.tasks[i].paddr % FRAME_SIZE) {
+			log(LF_OTHER, LVL_ERROR,
+			    "init[%zu]: Address is not frame aligned", i);
+			continue;
+		}
+
+		if (i == init.cnt - 1) {
+			/* Assume the last task is the RAM disk. */
+			init_rd((void *) init.tasks[i].paddr, init.tasks[i].size);
+		}
+	}
 	
 #ifdef CONFIG_KCONSOLE
 	if (!stdin) {
